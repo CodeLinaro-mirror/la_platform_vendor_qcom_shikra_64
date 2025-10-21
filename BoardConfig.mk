@@ -9,10 +9,10 @@ BUILD_BROKEN_MISSING_REQUIRED_MODULES  := true
 ALLOW_MISSING_DEPENDENCIES := true
 
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a-branchprot
+TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := oryon
+TARGET_CPU_VARIANT := kryo300
 
 TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
@@ -21,16 +21,16 @@ TARGET_NO_KERNEL := false
 TARGET_SIGNONLY_BOOTLOADER := true
 
 ifeq ($(TARGET_NO_KERNEL), true)
-BOARD_PREBUILT_BOOTIMAGE := device/qcom/canoe/boot.img
+BOARD_PREBUILT_BOOTIMAGE := device/qcom/colibri_64/boot.img
 BOOT_OS_VERSION = $(PLATFORM_VERSION_LAST_STABLE)
 BOOT_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 endif
 
 BOARD_RAMDISK_USE_LZ4 := true
 
--include $(QCPATH)/common/canoe/BoardConfigVendor.mk
+-include $(QCPATH)/common/colibri_64/BoardConfigVendor.mk
 FORCE_USE_ANDROIDMK_FOR_WPA_CONF := true
-SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/canoe_security_profile.xml $(QCPATH)/securemsm/security_profiles/alor_security_profile.xml
+SECTOOLS_SECURITY_PROFILE := $(QCPATH)/securemsm/security_profiles/shikra_security_profile.xml
 
 USE_OPENGL_RENDERER := true
 
@@ -73,9 +73,9 @@ ifeq ($(ENABLE_AB), true)
 TARGET_NO_RECOVERY := true
 # Defines for enabling A/B builds
 AB_OTA_UPDATER := true
-TARGET_RECOVERY_FSTAB := device/qcom/canoe/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/qcom/colibri_64/recovery.fstab
 else
-TARGET_RECOVERY_FSTAB := device/qcom/canoe/recovery_non_AB.fstab
+TARGET_RECOVERY_FSTAB := device/qcom/colibri_64/recovery_non_AB.fstab
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 endif
@@ -256,10 +256,10 @@ ifeq ($(TARGET_USES_QMAA), true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
 include device/qcom/wlan/default/BoardConfigWlan.mk
 else
-include device/qcom/wlan/canoe/BoardConfigWlan.mk
+include device/qcom/wlan/colibri_64/BoardConfigWlan.mk
 endif
 else
-include device/qcom/wlan/canoe/BoardConfigWlan.mk
+include device/qcom/wlan/colibri_64/BoardConfigWlan.mk
 endif
 endif
 

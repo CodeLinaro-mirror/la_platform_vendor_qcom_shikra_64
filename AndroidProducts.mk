@@ -1,5 +1,5 @@
 PRODUCT_MAKEFILES := \
-   $(LOCAL_DIR)/canoe.mk
+   $(LOCAL_DIR)/colibri_64.mk
 
 COMMON_LUNCH_CHOICES := \
-        canoe-userdebug
+        colibri_64-userdebug

@@ -1,6 +1,7 @@
-TARGET_BOARD_PLATFORM := canoe
-TARGET_BOARD_FAMILY := f-canoe
-TARGET_BOOTLOADER_BOARD_NAME := canoe
+TARGET_BOARD_PLATFORM := colibri
+TARGET_BOARD_SUFFIX := _64
+TARGET_BOARD_FAMILY := f-colibri
+TARGET_BOOTLOADER_BOARD_NAME := colibri
 
 BUILD_BROKEN_DUP_RULES := true
 
@@ -50,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.soc.manufacturer=QTI
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.board.family=f-canoe
+    ro.vendor.board.family=f-colibri
 
 # For QSSI builds, we should skip building the system image. Instead we build the
 # "non-system" images (that we support).
@@ -116,6 +117,8 @@ TARGET_USES_QMAA_OVERRIDE_GFX     := true
 TARGET_USES_QMAA_OVERRIDE_WFD     := true
 TARGET_USES_QMAA_OVERRIDE_GPS     := true
 TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE := true
+TARGET_USES_QMAA_OVERRIDE_BIOMETRICS := true
+TARGET_USES_QMAA_OVERRIDE_CRYPTFSHW := true
 TARGET_USES_QMAA_OVERRIDE_WLAN    := true
 TARGET_USES_QMAA_OVERRIDE_BLUETOOTH   := true
 TARGET_USES_QMAA_OVERRIDE_FM  := true
@@ -130,17 +133,22 @@ TARGET_USES_QMAA_OVERRIDE_DATA_CONNECTIVITY := true
 TARGET_USES_QMAA_OVERRIDE_RIL_DATA := true
 TARGET_USES_QMAA_OVERRIDE_DATA_IPA_AGENT := false
 TARGET_USES_QMAA_OVERRIDE_MSM_BUS_MODULE := true
+TARGET_USES_QMAA_OVERRIDE_MM_DRV := true
 TARGET_USES_QMAA_OVERRIDE_DRM    := true
 TARGET_USES_QMAA_OVERRIDE_KMGK := true
+TARGET_USES_QMAA_OVERRIDE_KERNEL_TESTS_INTERNAL := true
 TARGET_USES_QMAA_OVERRIDE_MSMIRQBALANCE := false
+TARGET_USES_QMAA_OVERRIDE_OPENVX := true
 TARGET_USES_QMAA_OVERRIDE_VPP := true
 TARGET_USES_QMAA_OVERRIDE_GP := true
 TARGET_USES_QMAA_OVERRIDE_PERF := true
+TARGET_USES_QMAA_OVERRIDE_POWER := true
 TARGET_USES_QMAA_OVERRIDE_SENSORS := true
 TARGET_USES_QMAA_OVERRIDE_SYNX := true
 TARGET_USES_QMAA_OVERRIDE_SECUREMSM_TESTS := true
 TARGET_USES_QMAA_OVERRIDE_SMCINVOKE := true
 TARGET_USES_QMAA_OVERRIDE_SOTER := true
+TARGET_USES_QMAA_OVERRIDE_TFTP := true
 TARGET_USES_QMAA_OVERRIDE_REMOTE_EFS := true
 TARGET_USES_QMAA_OVERRIDE_USB := true
 TARGET_USES_QMAA_OVERRIDE_DPM := true
@@ -212,6 +220,11 @@ TARGET_KERNEL_DLKM_DATAIPA_OVERRIDE := true
 TARGET_KERNEL_DLKM_FASTRPC_OVERRIDE := true
 TARGET_KERNEL_DLKM_EVA_OVERRIDE := true
 TARGET_KERNEL_DLKM_SPU_OVERRIDE := true
+TARGET_KERNEL_DLKM_THERMAL_OVERRIDE := true
+TARGET_KERNEL_DLKM_FINGERPRINT_OVERRIDE := true
+TARGET_KERNEL_DLKM_SAT_MODULE_OVERRIDE := true
+
+#TARGET_KERNEL_DLKM_OVERRIDE
 
 #####Dynamic partition Handling
 ###
@@ -278,10 +291,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ###########
 # Target naming
-PRODUCT_NAME := canoe
-PRODUCT_DEVICE := canoe
+PRODUCT_NAME := colibri_64
+PRODUCT_DEVICE := colibri_64
 PRODUCT_BRAND := qti
-PRODUCT_MODEL := Canoe for arm64
+PRODUCT_MODEL := Colibri_64 for arm64
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
@@ -289,10 +302,10 @@ ifeq ($(TARGET_USES_QMAA), true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
 include device/qcom/wlan/default/wlan.mk
 else
-include device/qcom/wlan/canoe/wlan.mk
+include device/qcom/wlan/colibri_64/wlan.mk
 endif
 else
-include device/qcom/wlan/canoe/wlan.mk
+include device/qcom/wlan/colibri_64/wlan.mk
 endif
 
 #----------------------------------------------------------------------
@@ -321,7 +334,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 ###########
 # Target configurations
 
-QCOM_BOARD_PLATFORMS += canoe
+QCOM_BOARD_PLATFORMS += colibri
 
 TARGET_USES_QSSI := true
 
@@ -412,22 +425,21 @@ AB_OTA_POSTINSTALL_CONFIG += \
 QTI_CAMERA_PROVIDER_SERVICE := 2.7
 QTI_CAMERA_AON_SERVICE := 1.2
 
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/canoe/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/colibri_64/framework_manifest.xml
 
 # Enable compilation of image_generation_tool
 TARGET_USES_IMAGE_GEN_TOOL := true
 
 # QCV allows multiple chipsets to be supported on a single vendor.
-# Add vintf device manifests for chipsets in canoe QCV family below.
+# Add vintf device manifests for chipsets in Colibri QCV family below.
 ifeq ($(TARGET_USES_QMAA), true)
 TARGET_USES_QCV := false
 else
 TARGET_USES_QCV := true
 endif
 
-DEVICE_MANIFEST_SKUS := canoe alor
-DEVICE_MANIFEST_CANOE_FILES := device/qcom/canoe/manifest_canoe.xml
-DEVICE_MANIFEST_ALOR_FILES := device/qcom/canoe/manifest_alor.xml
+DEVICE_MANIFEST_SKUS := colibri
+DEVICE_MANIFEST_COLIBRI_FILES := device/qcom/colibri_64/manifest_colibri.xml
 
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 

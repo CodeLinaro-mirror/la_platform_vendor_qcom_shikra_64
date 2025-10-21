@@ -80,10 +80,10 @@ VENDOR_KERNEL_WHITELIST = {}
 
 VENDOR_FOREACH_WHITELIST = {
     "device/qcom/common/utils.mk",
-    "device/qcom/canoe/canoe.mk",
-    "device/qcom/wlan/canoe/BoardConfigWlan.mk",
-    "device/qcom/wlan/canoe/wlan.mk",
-    "vendor/qcom/opensource/audio-hal/primary-hal/configs/canoe/canoe.mk",
+    "device/qcom/colibri_64/colibri_64.mk",
+    "device/qcom/wlan/colibri_64/BoardConfigWlan.mk",
+    "device/qcom/wlan/colibri_64/wlan.mk",
+    "vendor/qcom/opensource/audio-hal/primary-hal/configs/colibri/colibri.mk",
     "vendor/qcom/proprietary/android-perf-noship/profiles.mk",
     "vendor/qcom/proprietary/android-perf/profiles.mk",
     "vendor/qcom/proprietary/android-power-noship/powermodule-vendor-product.mk",
@@ -98,7 +98,7 @@ VENDOR_MACRO_WHITELIST = {
     "device/qcom/sepolicy_vndr/SEPolicy.mk",
     "hardware/qcom/display/config/display-product.mk",
     "hardware/qcom/media/product.mk",
-    "vendor/qcom/opensource/audio-hal/primary-hal/configs/canoe/canoe.mk",
+    "vendor/qcom/opensource/audio-hal/primary-hal/configs/colibri/colibri.mk",
     "vendor/qcom/opensource/audio-kernel/audio_kernel_modules.mk",
     "vendor/qcom/opensource/audio-kernel/audio_kernel_product_board.mk",
     "vendor/qcom/opensource/bt-kernel/bt_kernel_vendor_board.mk",
@@ -163,7 +163,7 @@ VENDOR_OVERRIDE_WHITELIST = {
 }
 
 VENDOR_SOONG_WHITELIST = {
-    "device/qcom/canoe/BoardConfig.mk",
+    "device/qcom/colibri_64/BoardConfig.mk",
     "device/qcom/vendor-common/base.mk",
     "hardware/qcom/display/config/display-product.mk",
     "vendor/qcom/opensource/audio-hal/primary-hal/configs/audio_vendor_product.mk",

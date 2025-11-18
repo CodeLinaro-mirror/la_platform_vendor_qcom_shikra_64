@@ -1,5 +1,5 @@
 PRODUCT_MAKEFILES := \
-   $(LOCAL_DIR)/colibri_64.mk
+   $(LOCAL_DIR)/shikra_64.mk
 
 COMMON_LUNCH_CHOICES := \
-        colibri_64-userdebug
+        shikra_64-userdebug

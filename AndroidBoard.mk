@@ -105,7 +105,7 @@ include vendor/qcom/opensource/core-utils/build/AndroidBoardCommon.mk
 # wlan specific
 #----------------------------------------------------------------------
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-include device/qcom/wlan/colibri_64/AndroidBoardWlan.mk
+include device/qcom/wlan/shikra_64/AndroidBoardWlan.mk
 endif
 
 $(warning his is to print target out vendor $(TARGET_OUT_VENDOR))

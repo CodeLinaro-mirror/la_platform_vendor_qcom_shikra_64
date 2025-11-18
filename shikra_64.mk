@@ -1,7 +1,7 @@
-TARGET_BOARD_PLATFORM := colibri
+TARGET_BOARD_PLATFORM := shikra
 TARGET_BOARD_SUFFIX := _64
-TARGET_BOARD_FAMILY := f-colibri
-TARGET_BOOTLOADER_BOARD_NAME := colibri
+TARGET_BOARD_FAMILY := f-shikra
+TARGET_BOOTLOADER_BOARD_NAME := shikra
 
 BUILD_BROKEN_DUP_RULES := true
 
@@ -51,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.soc.manufacturer=QTI
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.board.family=f-colibri
+    ro.vendor.board.family=f-shikra
 
 # For QSSI builds, we should skip building the system image. Instead we build the
 # "non-system" images (that we support).
@@ -291,10 +291,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ###########
 # Target naming
-PRODUCT_NAME := colibri_64
-PRODUCT_DEVICE := colibri_64
+PRODUCT_NAME := shikra_64
+PRODUCT_DEVICE := shikra_64
 PRODUCT_BRAND := qti
-PRODUCT_MODEL := Colibri_64 for arm64
+PRODUCT_MODEL := Shikra_64 for arm64
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
@@ -302,10 +302,10 @@ ifeq ($(TARGET_USES_QMAA), true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
 include device/qcom/wlan/default/wlan.mk
 else
-include device/qcom/wlan/colibri_64/wlan.mk
+include device/qcom/wlan/shikra_64/wlan.mk
 endif
 else
-include device/qcom/wlan/colibri_64/wlan.mk
+include device/qcom/wlan/shikra_64/wlan.mk
 endif
 
 #----------------------------------------------------------------------
@@ -334,7 +334,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 ###########
 # Target configurations
 
-QCOM_BOARD_PLATFORMS += colibri
+QCOM_BOARD_PLATFORMS += shikra
 
 TARGET_USES_QSSI := true
 
@@ -425,21 +425,21 @@ AB_OTA_POSTINSTALL_CONFIG += \
 QTI_CAMERA_PROVIDER_SERVICE := 2.7
 QTI_CAMERA_AON_SERVICE := 1.2
 
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/colibri_64/framework_manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/shikra_64/framework_manifest.xml
 
 # Enable compilation of image_generation_tool
 TARGET_USES_IMAGE_GEN_TOOL := true
 
 # QCV allows multiple chipsets to be supported on a single vendor.
-# Add vintf device manifests for chipsets in Colibri QCV family below.
+# Add vintf device manifests for chipsets in Shikra QCV family below.
 ifeq ($(TARGET_USES_QMAA), true)
 TARGET_USES_QCV := false
 else
 TARGET_USES_QCV := true
 endif
 
-DEVICE_MANIFEST_SKUS := colibri
-DEVICE_MANIFEST_COLIBRI_FILES := device/qcom/colibri_64/manifest_colibri.xml
+DEVICE_MANIFEST_SKUS := shikra
+DEVICE_MANIFEST_SHIKRA_FILES := device/qcom/shikra_64/manifest_shikra.xml
 
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 

@@ -481,6 +481,9 @@ endif
 
 PRODUCT_PACKAGES += $(AUDIO_DLKM)
 
+#Key derivation in vts kernel encryption tests use legacykdf
+PRODUCT_VENDOR_PROPERTIES += ro.crypto.hw_wrapped_keys.kdf=legacykdf
+
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules

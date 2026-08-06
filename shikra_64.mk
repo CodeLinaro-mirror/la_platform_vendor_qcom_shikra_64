@@ -531,9 +531,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libvolumelistener
 
+ifneq ($(TARGET_BOARD_TYPE), auto)
 PRODUCT_BOOT_JARS += tcmiface
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
+endif
 ifeq ($(TARGET_USES_QMAA), true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_ANDROID_CORE),true)
 PRODUCT_ENABLE_QESDK := false

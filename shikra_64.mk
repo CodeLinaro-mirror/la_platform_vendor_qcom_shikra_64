@@ -299,6 +299,12 @@ PRODUCT_MODEL := Shikra_64 for arm64
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
+ifeq ($(TARGET_BOARD_AUTO), true)
+BOARD_HAS_QCOM_WLAN := false
+TARGET_USES_QMAA_OVERRIDE_WLAN := false
+TARGET_KERNEL_DLKM_WLAN_OVERRIDE := false
+endif
+
 ifeq ($(TARGET_USES_QMAA), true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_WLAN), true)
 include device/qcom/wlan/default/wlan.mk

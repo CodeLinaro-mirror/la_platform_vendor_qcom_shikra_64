@@ -238,17 +238,19 @@ PRODUCT_PACKAGES += android.hardware.fastboot-service.example_recovery
 
 ifeq ($(ENABLE_AB),true)
 ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc
 else
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_noSysext.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_noSysext.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc
 endif
 else
 ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_non_AB.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_non_AB.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.emmc
 else
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_non_AB_noSysext.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/emmc/fstab_non_AB_noSysext.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.emmc
 endif
 endif
+
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/sdcard/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.sdcard
 
 #Charger
 ifeq ($(ENABLE_AB),true)
@@ -415,6 +417,10 @@ PRODUCT_PACKAGES += \
 # Userdata checkpoint
 PRODUCT_PACKAGES += \
     checkpoint_gc
+
+# Boot from sdcard
+PRODUCT_PACKAGES += \
+    fstab.sdcard
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
